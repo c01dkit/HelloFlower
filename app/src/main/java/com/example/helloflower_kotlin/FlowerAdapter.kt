@@ -1,6 +1,7 @@
 package com.example.helloflower_kotlin
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,17 @@ class FlowerAdapter(val context: Context, val flowerList: List<Flower>):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.flower_item,parent,false)
-        return ViewHolder(view)
+        val holder = ViewHolder(view)
+        holder.itemView.setOnClickListener {
+            val position = holder.adapterPosition
+            val flower = flowerList[position]
+            val intent = Intent(context, FlowerActivity::class.java).apply {
+                putExtra(FlowerActivity.FLOWER_NAME, flower.name)
+                putExtra(FlowerActivity.FLOWER_IMAGE_ID,flower.imageId)
+            }
+            context.startActivity(intent)
+        }
+        return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

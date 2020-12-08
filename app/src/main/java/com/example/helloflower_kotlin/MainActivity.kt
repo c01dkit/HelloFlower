@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.concurrent.Flow
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
     val flowers = mutableListOf(Flower("begonia",R.drawable.begonia),
         Flower("rose",R.drawable.rose), Flower("chrysanthemum",R.drawable.chrysanthemum),
         Flower("jasmine",R.drawable.jasmine), Flower("lily",R.drawable.lily),
-        Flower("peachblossom",R.drawable.peachblossom), Flower("pearflower",R.drawable.pearflower),
+        Flower("peachblossom",R.drawable.peachblossom), Flower("pearblossom",R.drawable.pearblossom),
         Flower("mint",R.drawable.mint))
 
     val flowerList = ArrayList<Flower>()
@@ -32,21 +32,17 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "功能有待开发~", Toast.LENGTH_SHORT).show()
             true
         }
-        fab_like.setOnClickListener {
-            Toast.makeText(this, "功能有待开发~", Toast.LENGTH_SHORT).show()
-        }
-        fab_light.setOnClickListener {
-            Toast.makeText(this, "功能有待开发~", Toast.LENGTH_SHORT).show()
-        }
-        fab_water.setOnClickListener {
-            Toast.makeText(this, "功能有待开发~", Toast.LENGTH_SHORT).show()
-        }
 
         initFlowers()
         val layoutManager = GridLayoutManager(this,2)
         recyclerView.layoutManager = layoutManager
         val adapter = FlowerAdapter(this,flowerList)
         recyclerView.adapter = adapter
+
+        swipeRefresh.setColorSchemeResources(R.color.colorPrimary)
+        swipeRefresh.setOnRefreshListener {
+            refreshFlowers(adapter)
+        }
     }
 
     private fun initFlowers(){
@@ -57,6 +53,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun refreshFlowers(adapter: FlowerAdapter) {
+        thread {
+            Thread.sleep(2000)
+            runOnUiThread {
+                initFlowers()
+                adapter.notifyDataSetChanged()
+                swipeRefresh.isRefreshing = false
+            }
+        }
+    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> drawerLayout.openDrawer(GravityCompat.START)
