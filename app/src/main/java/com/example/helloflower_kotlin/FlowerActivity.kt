@@ -2,12 +2,19 @@ package com.example.helloflower_kotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_flower.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class FlowerActivity : AppCompatActivity() {
-
+    val TAG = "FlowerActivty"
     companion object {
         const val FLOWER_NAME = "flower_name"
         const val FLOWER_IMAGE_ID = "flower_image_id"
@@ -23,6 +30,33 @@ class FlowerActivity : AppCompatActivity() {
         collapsingToolbar.title = flowerName
         Glide.with(this).load(flowerImageId).into(flowerImageView)
         flowerContentText.text = generateFlowerContent(flowerName)
+
+        menu.setOnClickListener {
+            val retrofit = Retrofit.Builder()
+                .baseUrl("http://120.55.161.100/HelloFlower/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            val dormitoryService = retrofit.create(GetInfoService::class.java)
+            dormitoryService.getAppData().enqueue(object : Callback<List<InfoData>> {
+                override fun onResponse(
+                    call: Call<List<InfoData>>,
+                    response: Response<List<InfoData>>
+                ) {
+                    val list = response.body()
+                    if (list!=null) {
+                        for (data in list) {
+                            Log.d(TAG, "onResponse: ${data.info} ${data.version}")
+                            Toast.makeText(baseContext,data.info,Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<List<InfoData>>, t: Throwable) {
+                    t.printStackTrace()
+                }
+            })
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
