@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">HelloFlower</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="userDescription">有任何问题或意见请联系我：bychang@zju.edu.cn</string>
+    <string name="userName">c01dkit</string>
+    <string name="navFirst">主页</string>
+    <string name="navSecond">好友</string>
+    <string name="navThird">设置（正在建设）</string>
+    <string name="navFourth">反馈</string>
+    <string name="log">
+
+        \n2020-12-13 --- v0.1.3\n
+        * 更新了drawer的选项\n
+        * 初步添加setting页面\n
+        * 初步添加反馈页面\n
+
+        \n2020-12-10 --- v0.1.2\n
+        * 导入了Retrofit库，使用阿里云服务器实现了基础的网络数据获取：具体途径是点击进入某个列表项的详情菜单后，再点击浮动按钮\n
+        * ESP32开发板到手，WIFI模块测试正常\n
+        * 和组员讨论IOT选用阿里IOT平台+mqtt或者阿里ECS云服务器+http，初步决定使用前者\n
+
+        \n2020-12-8 --- v0.1.1\n
+        * 添加首页刷新的视觉效果\n
+        * 增加详情页，使用collapse布局\n
+        * 为首页列表项添加点击事件，打开对应详情页\n
+        * 修改详情页标题栏，实现视差、状态栏隐藏\n
+
+        \n2020-12-7 --- v0.1.0\n
+        * 首次推送至git\n
+        * 为首页添加drawer布局\n
+        * 为首页添加侧边3按钮\n
+        * 为首页添加滑动卡片布局\n</string>
 </resources>

@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="有任何问题或意见请联系我：bychang@zju.edu.cn"
+        android:text="@string/userDescription"
         android:textColor="#FFF"
         android:textSize="14sp" />
 
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/mailText"
-        android:text="c01dkit"
+        android:text="@string/userName"
         android:textColor="#FFF"
         android:textSize="14sp" />
 

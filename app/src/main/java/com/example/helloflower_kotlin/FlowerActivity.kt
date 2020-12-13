@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_flower.*
+import kotlinx.android.synthetic.main.flower_activity.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,7 +22,7 @@ class FlowerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_flower)
+        setContentView(R.layout.flower_activity)
         val flowerName = intent.getStringExtra(FLOWER_NAME) ?: ""
         val flowerImageId = intent.getIntExtra(FLOWER_IMAGE_ID,0)
         setSupportActionBar(toolbar)

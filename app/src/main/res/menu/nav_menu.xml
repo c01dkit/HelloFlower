@@ -4,18 +4,18 @@
         <item
             android:id="@+id/navSelf"
             android:icon="@drawable/nav_self"
-            android:title="主页" />
+            android:title="@string/navFirst" />
         <item
             android:id="@+id/navFriends"
             android:icon="@drawable/nav_friends"
-            android:title="好友" />
+            android:title="@string/navSecond" />
         <item
             android:id="@+id/navSettings"
             android:icon="@drawable/nav_settings"
-            android:title="设置" />
+            android:title="@string/navThird" />
         <item
             android:id="@+id/navInfo"
             android:icon="@drawable/nav_info"
-            android:title="关于" />
+            android:title="@string/navFourth" />
     </group>
 </menu>

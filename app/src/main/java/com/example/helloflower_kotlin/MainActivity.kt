@@ -1,12 +1,12 @@
 package com.example.helloflower_kotlin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.main_activity.*
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.main_activity)
         setSupportActionBar(toolbar)
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
@@ -32,9 +32,16 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId){
                 R.id.navSelf->{
                     drawerLayout.closeDrawers()
+
                 }
                 R.id.navInfo->{
+                    val intent = Intent(this,FeedbackActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.navSettings->{
 
+                    val intent = Intent(this,SettingsActivity::class.java)
+                    startActivity(intent)
                 }
             }
             true
