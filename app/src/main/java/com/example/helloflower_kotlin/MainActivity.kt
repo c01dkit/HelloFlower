@@ -29,7 +29,14 @@ class MainActivity : AppCompatActivity() {
             it.setHomeAsUpIndicator(R.drawable.ic_menu)
         }
         navView.setNavigationItemSelectedListener {
-            Toast.makeText(this, "功能有待开发~", Toast.LENGTH_SHORT).show()
+            when (it.itemId){
+                R.id.navSelf->{
+                    drawerLayout.closeDrawers()
+                }
+                R.id.navInfo->{
+
+                }
+            }
             true
         }
 
