@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
+import kotlinx.android.synthetic.main.feedback_activity.*
 import kotlinx.android.synthetic.main.settings_activity.*
+import kotlinx.android.synthetic.main.settings_activity.toolbar
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -19,6 +21,8 @@ class SettingsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.title = resources.getString(R.string.navThird)
+
+        setListeners()
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
@@ -34,5 +38,11 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
         return true
+    }
+    private fun setListeners(){
+        feedbackButton.setOnClickListener {
+            val feedback = feedbackText.text
+
+        }
     }
 }

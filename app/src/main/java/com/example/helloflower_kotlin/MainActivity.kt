@@ -11,13 +11,13 @@ import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
-    val flowers = mutableListOf(Flower("begonia",R.drawable.begonia),
-        Flower("rose",R.drawable.rose), Flower("chrysanthemum",R.drawable.chrysanthemum),
-        Flower("jasmine",R.drawable.jasmine), Flower("lily",R.drawable.lily),
-        Flower("peachblossom",R.drawable.peachblossom), Flower("pearblossom",R.drawable.pearblossom),
-        Flower("mint",R.drawable.mint))
+    val flowers = mutableListOf(FlowerData("begonia",R.drawable.begonia),
+        FlowerData("rose",R.drawable.rose), FlowerData("chrysanthemum",R.drawable.chrysanthemum),
+        FlowerData("jasmine",R.drawable.jasmine), FlowerData("lily",R.drawable.lily),
+        FlowerData("peachblossom",R.drawable.peachblossom), FlowerData("pearblossom",R.drawable.pearblossom),
+        FlowerData("mint",R.drawable.mint))
 
-    val flowerList = ArrayList<Flower>()
+    val flowerList = ArrayList<FlowerData>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

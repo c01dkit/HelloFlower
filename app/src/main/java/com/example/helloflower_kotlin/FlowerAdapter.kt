@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class FlowerAdapter(val context: Context, val flowerList: List<Flower>):
+class FlowerAdapter(val context: Context, val flowerList: List<FlowerData>):
         RecyclerView.Adapter<FlowerAdapter.ViewHolder>(){
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){

@@ -23,6 +23,8 @@
     <string name="navThird">设置（正在建设）</string>
     <string name="navFourth">反馈</string>
     <string name="log">
+        \n2020-12-15 --- v0.1.4\n
+        * 基本实现了反馈功能\n
 
         \n2020-12-13 --- v0.1.3\n
         * 更新了drawer的选项\n
@@ -45,4 +47,6 @@
         * 为首页添加drawer布局\n
         * 为首页添加侧边3按钮\n
         * 为首页添加滑动卡片布局\n</string>
+    <string name="submitFeedback">提交反馈</string>
+    <string name="feedbackHint">请在此处填写反馈意见</string>
 </resources>

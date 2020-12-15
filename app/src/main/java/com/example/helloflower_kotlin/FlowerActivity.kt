@@ -32,12 +32,8 @@ class FlowerActivity : AppCompatActivity() {
         flowerContentText.text = generateFlowerContent(flowerName)
 
         menu.setOnClickListener {
-            val retrofit = Retrofit.Builder()
-                .baseUrl("http://120.55.161.100/HelloFlower/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-            val dormitoryService = retrofit.create(GetInfoService::class.java)
-            dormitoryService.getAppData().enqueue(object : Callback<List<InfoData>> {
+            val flowerService = ServiceCreator.create(GetInfoService::class.java)
+            flowerService.getAppData().enqueue(object : Callback<List<InfoData>> {
                 override fun onResponse(
                     call: Call<List<InfoData>>,
                     response: Response<List<InfoData>>
@@ -45,8 +41,7 @@ class FlowerActivity : AppCompatActivity() {
                     val list = response.body()
                     if (list!=null) {
                         for (data in list) {
-                            Log.d(TAG, "onResponse: ${data.info} ${data.version}")
-                            Toast.makeText(baseContext,data.info,Toast.LENGTH_SHORT).show()
+                            Toast.makeText(baseContext,"Hello Flower~",Toast.LENGTH_SHORT).show()
                         }
                     }
                 }

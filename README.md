@@ -1,8 +1,19 @@
 # README
 
-HelloFlower是基于MVVM框架，以Kotlin语言开发的一款App
+HelloFlower是一款物联网时代智慧家居app，用户可以使用这款软件远程管理植物景观系统，并可与其他用户进行互动。
 
-## log
+## Features
+
+* 使用Google推荐的Kotlin作为项目开发语言
+* 使用Retrofit2作为网络库
+* 使用阿里云ECS云服务器，基于Apache搭建php后端环境，接入MySQL实现数据查询
+* 使用阿里云IOT开发平台，基于Mqtt协议实现传感器数据上报与控制命令下达
+* 遵循Material Design进行界面、布局、组件的设计
+
+## Log
+
+* 2020-12-15
+  * 基本实现了反馈功能
 
 * 2020-12-13
   * 更新了drawer的选项
@@ -23,7 +34,17 @@ HelloFlower是基于MVVM框架，以Kotlin语言开发的一款App
   * 为首页添加侧边3按钮
   * 为首页添加滑动卡片布局
 
+## Challenges
+
+* 使用retrofit2发送post请求时无法，php端解析$_POST为空
+  * retrofit2发送json，请求头是application/json而不是application/x-www-form-urlencoded或者multipart/form-data，php不会解析成post数组
+  * 解决方法是手动转数组[^1]
+
 ## References
+
+[^1]: https://stackoverflow.com/questions/34274390/can-not-get-post-parameters-when-sending-post-request-with-retrofit/34275428#34275428
+
+
 
 1. 《第一行代码（第三版）》郭霖
 2. [Google官方推荐的应用内Icons](https://material.io/resources/icons/)

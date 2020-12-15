@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:title="@string/navFourth"
             />
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.core.widget.NestedScrollView
@@ -40,6 +41,41 @@
                     </TextView>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="4dp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/feedbackText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/feedbackHint"/>
+
+                    <Button
+                        android:id="@+id/feedbackButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/submitFeedback"
+                        android:textSize="14sp"
+                        style="@style/Widget.MaterialComponents.Button"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
