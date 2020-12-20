@@ -1,6 +1,7 @@
 package com.example.helloflower_kotlin
 
 import android.os.Bundle
+import android.os.Looper
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,8 +24,9 @@ class FeedbackActivity : AppCompatActivity() {
             if (feedback.isNotEmpty()){
                 thread {
                     feedbackService.postFeedBack(FeedbackData("佚名",feedback)).execute()
-                    Toast.makeText(this, "反馈已提交", Toast.LENGTH_SHORT).show()
                 }
+                Toast.makeText(this, "反馈已提交", Toast.LENGTH_SHORT).show()
+                feedbackText.setText("")
             } else {
                 Toast.makeText(this, "输入不能为空", Toast.LENGTH_SHORT).show()
             }

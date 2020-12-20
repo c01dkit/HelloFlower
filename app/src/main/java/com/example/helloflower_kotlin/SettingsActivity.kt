@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
-import kotlinx.android.synthetic.main.feedback_activity.*
-import kotlinx.android.synthetic.main.settings_activity.*
 import kotlinx.android.synthetic.main.settings_activity.toolbar
 
 
@@ -28,6 +26,7 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
         }
     }
 
@@ -40,9 +39,6 @@ class SettingsActivity : AppCompatActivity() {
         return true
     }
     private fun setListeners(){
-        feedbackButton.setOnClickListener {
-            val feedback = feedbackText.text
 
-        }
     }
 }

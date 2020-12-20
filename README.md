@@ -12,6 +12,11 @@ HelloFlower是一款物联网时代智慧家居app，用户可以使用这款软
 
 ## Log
 
+* 2020-12-20
+  * 修复了反馈闪退的问题（线程里不能修改UI主线程）
+  * 修复了设置闪退的问题（测试时使用了其他布局的控件）
+  * 实现了APP接入阿里云IOT平台的功能
+
 * 2020-12-15
   * 基本实现了反馈功能
 
@@ -50,4 +55,5 @@ HelloFlower是一款物联网时代智慧家居app，用户可以使用这款软
 2. [Google官方推荐的应用内Icons](https://material.io/resources/icons/)
 3. [Material Design - 一套便捷的界面开发标准](https://material.io/components)
 4. [获取应用程序版本信息](https://blog.csdn.net/true_maitian/article/details/74963867?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control) (使用BuildConfig下的结果即可)
-5. 
+5. [阿里云官网提供的Android SDK接入标准](https://help.aliyun.com/document_detail/146630.html?spm=a2c4g.11186623.2.29.4ffc7c80rLjicv#task-2362441)
+
