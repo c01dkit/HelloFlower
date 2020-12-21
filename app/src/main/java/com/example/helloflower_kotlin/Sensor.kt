@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Device (var deviceName: String, var devicePicture: Int,
+data class Sensor (var ProductKey:String, var DeviceName: String, var DeviceSecret: String,
                    var groupID: String, var remark: String){
 
     @PrimaryKey(autoGenerate = true)

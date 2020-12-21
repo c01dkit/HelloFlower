@@ -11,6 +11,7 @@ HelloFlower是一款物联网时代智慧家居app，用户可以使用这款软
 * 遵循Material Design进行界面、布局、组件的设计
 * 使用LiveData实现数据传感器数据动态更新
 * 使用Room进行本地数据库处理，减少网络请求次数
+* 使用PreferenceScreen操作本地SharedPreference进行数据持久化
 
 ## Log
 
@@ -18,6 +19,8 @@ HelloFlower是一款物联网时代智慧家居app，用户可以使用这款软
   * 将APP接入IOT封装成工具类，实现了传参直接创建设备、自动订阅topic、自动发布topic
   * 实现了app内绑定传感器设备、手机设备的功能
   * 实现了数据流转
+  * 创建了Room保存传感器信息
+  * 修改设置界面，使用PreferenceScreen布局结合SharedPreference保存app配置信息
 
 * 2020-12-20
   * 修复了反馈闪退的问题（线程里不能修改UI主线程）

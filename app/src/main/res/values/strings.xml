@@ -1,27 +1,29 @@
 <resources>
     <string name="app_name">HelloFlower</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">设置</string>
 
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
+    <string name="settings_header">本机属性设置</string>
+    <string name="sync_header">同步设置</string>
+    <string name="connection_header">测试连接</string>
+    <!-- App Preferences -->
+    <string name="ProductKey">ProductKey</string>
+    <string name="DeviceName">DeviceName</string>
+    <string name="DeviceSecret">DeviceSecret</string>
 
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
+
+
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="userDescription">有任何问题或意见请联系我：bychang@zju.edu.cn</string>
     <string name="userName">c01dkit</string>
-    <string name="navFirst">主页</string>
-    <string name="navSecond">好友</string>
-    <string name="navThird">设置（正在建设）</string>
-    <string name="navFourth">反馈</string>
+    <string name="navProfile">主页</string>
+    <string name="navSettings">设置</string>
+    <string name="navFeedback">反馈</string>
     <string name="log">
         \n2020-12-15 --- v0.1.4\n
         * 基本实现了反馈功能\n

@@ -3,8 +3,7 @@ package com.example.helloflower_kotlin
 import androidx.room.*
 
 @Dao
-interface DeviceDao {
-
+interface DeviceDao{
     @Insert
     fun insertDevice(device: Device): Long
 
@@ -19,5 +18,4 @@ interface DeviceDao {
 
     @Query("delete from Device where id = :id")
     fun deleteDeviceById(id: Long): Int
-
 }

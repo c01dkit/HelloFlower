@@ -13,18 +13,14 @@ import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
-
-    private val flowers = mutableListOf(FlowerData("begoina",R.drawable.begonia,
-"a15XdWHFUT3","DHT11","1a14ff4242681201bf79637752514107"))
-
+    lateinit var deviceDao: DeviceDao
     private val flowerList = ArrayList<FlowerData>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-
+        deviceDao = AppDatabase.getDatabase(this).deviceDao()
         setSupportActionBar(toolbar)
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
@@ -34,7 +30,6 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId){
                 R.id.navSelf->{
                     drawerLayout.closeDrawers()
-
                 }
                 R.id.navInfo->{
                     val intent = Intent(this,FeedbackActivity::class.java)
@@ -65,8 +60,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFlowers(){
         flowerList.clear()
-        flowerList.addAll(flowers)
-        flowerList.addAll(flowers)
+        thread {
+            for (device in deviceDao.loadAllDevices()){
+                flowerList.add(
+                    FlowerData(device.deviceName,device.devicePicture,device.groupID))
+            }
+        }
+        flowerList.add(FlowerData("添加新的植物",R.drawable.begonia,""))
     }
 
     private fun refreshFlowers(adapter: FlowerAdapter) {

@@ -18,7 +18,7 @@ class SettingsActivity : AppCompatActivity() {
             .commit()
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        toolbar.title = resources.getString(R.string.navThird)
+        toolbar.title = resources.getString(R.string.navSettings)
 
         setListeners()
     }

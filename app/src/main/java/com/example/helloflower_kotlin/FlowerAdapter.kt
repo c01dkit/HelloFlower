@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 
 class FlowerAdapter(val context: Context, val flowerList: List<FlowerData>):
         RecyclerView.Adapter<FlowerAdapter.ViewHolder>(){
-    private val TAG = "FlowerAdapter: "
+    private val TAG = "FlowerAdapter"
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val flowerImage: ImageView = view.findViewById(R.id.flowerImage)
         val flowerName: TextView = view.findViewById(R.id.flowerName)
@@ -24,13 +24,18 @@ class FlowerAdapter(val context: Context, val flowerList: List<FlowerData>):
         val holder = ViewHolder(view)
         holder.itemView.setOnClickListener {
             val position = holder.adapterPosition
-            val flower = flowerList[position]
-            Log.i(TAG, "onCreateViewHolder: $position")
-            val intent = Intent(context, FlowerActivity::class.java).apply {
-                putExtra(FlowerActivity.FLOWER_NAME, flower.name)
-                putExtra(FlowerActivity.FLOWER_IMAGE_ID,flower.imageId)
+            if (position == itemCount-1){
+                
+            } else{
+                val flower = flowerList[position]
+                val intent = Intent(context, FlowerActivity::class.java).apply {
+                    putExtra(FlowerActivity.FLOWER_NAME, flower.name)
+                    putExtra(FlowerActivity.FLOWER_IMAGE_ID,flower.imageId)
+                }
+                context.startActivity(intent)
             }
-            context.startActivity(intent)
+
+
         }
         return holder
     }

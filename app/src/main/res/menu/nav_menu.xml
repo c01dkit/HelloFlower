@@ -4,18 +4,15 @@
         <item
             android:id="@+id/navSelf"
             android:icon="@drawable/nav_self"
-            android:title="@string/navFirst" />
-        <item
-            android:id="@+id/navFriends"
-            android:icon="@drawable/nav_friends"
-            android:title="@string/navSecond" />
+            android:title="@string/navProfile" />
+
         <item
             android:id="@+id/navSettings"
             android:icon="@drawable/nav_settings"
-            android:title="@string/navThird" />
+            android:title="@string/navSettings" />
         <item
             android:id="@+id/navInfo"
             android:icon="@drawable/nav_info"
-            android:title="@string/navFourth" />
+            android:title="@string/navFeedback" />
     </group>
 </menu>
