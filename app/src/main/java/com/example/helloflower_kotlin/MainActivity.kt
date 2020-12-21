@@ -2,28 +2,20 @@ package com.example.helloflower_kotlin
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.main_activity.*
-import org.eclipse.paho.android.service.MqttAndroidClient
-import org.eclipse.paho.client.mqttv3.*
-import java.math.BigInteger
-import javax.crypto.Mac
-import javax.crypto.spec.SecretKeySpec
 import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
+    lateinit var viewModel: MainViewModel
 
-    private val flowers = mutableListOf(FlowerData("begonia",R.drawable.begonia),
-        FlowerData("rose",R.drawable.rose), FlowerData("chrysanthemum",R.drawable.chrysanthemum),
-        FlowerData("jasmine",R.drawable.jasmine), FlowerData("lily",R.drawable.lily),
-        FlowerData("peachblossom",R.drawable.peachblossom), FlowerData("pearblossom",R.drawable.pearblossom),
-        FlowerData("mint",R.drawable.mint))
+    private val flowers = mutableListOf(FlowerData("begoina",R.drawable.begonia,
+"a15XdWHFUT3","DHT11","1a14ff4242681201bf79637752514107"))
 
     private val flowerList = ArrayList<FlowerData>()
 
@@ -31,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
         setSupportActionBar(toolbar)
         supportActionBar?.let {
             it.setDisplayHomeAsUpEnabled(true)
@@ -71,10 +65,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFlowers(){
         flowerList.clear()
-        repeat(40) {
-            val index = (0 until flowers.size).random()
-            flowerList.add(flowers[index])
-        }
+        flowerList.addAll(flowers)
+        flowerList.addAll(flowers)
     }
 
     private fun refreshFlowers(adapter: FlowerAdapter) {

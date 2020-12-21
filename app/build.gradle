@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
@@ -31,8 +32,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-}
 
+}
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -42,6 +43,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -50,8 +53,11 @@ dependencies {
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.4'
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
 
+    implementation 'androidx.room:room-runtime:2.2.2'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    kapt 'androidx.room:room-compiler:2.2.2'
 }

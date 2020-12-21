@@ -9,11 +9,15 @@ HelloFlower是一款物联网时代智慧家居app，用户可以使用这款软
 * 使用阿里云ECS云服务器，基于Apache搭建php后端环境，接入MySQL实现数据查询
 * 使用阿里云IOT开发平台，基于Mqtt协议实现传感器数据上报与控制命令下达
 * 遵循Material Design进行界面、布局、组件的设计
+* 使用LiveData实现数据传感器数据动态更新
+* 使用Room进行本地数据库处理，减少网络请求次数
 
 ## Log
 
 * 2020-12-21
   * 将APP接入IOT封装成工具类，实现了传参直接创建设备、自动订阅topic、自动发布topic
+  * 实现了app内绑定传感器设备、手机设备的功能
+  * 实现了数据流转
 
 * 2020-12-20
   * 修复了反馈闪退的问题（线程里不能修改UI主线程）
@@ -47,12 +51,18 @@ HelloFlower是一款物联网时代智慧家居app，用户可以使用这款软
 * 使用retrofit2发送post请求时无法，php端解析$_POST为空
   * retrofit2发送json，请求头是application/json而不是application/x-www-form-urlencoded或者multipart/form-data，php不会解析成post数组
   * 解决方法是手动转数组[^1]
+* gradle build经常出现证书错误问题"unable to find valid certification path to requested target"
+  * 手动下载证书并添加到本地[^2]
 
 ## References
 
 [^1]: https://stackoverflow.com/questions/34274390/can-not-get-post-parameters-when-sending-post-request-with-retrofit/34275428#34275428
 
+[^2]: https://stackoverflow.com/questions/21076179/pkix-path-building-failed-and-unable-to-find-valid-certification-path-to-requ
 
+
+
+---
 
 1. 《第一行代码（第三版）》郭霖
 2. [Google官方推荐的应用内Icons](https://material.io/resources/icons/)

@@ -2,6 +2,7 @@ package com.example.helloflower_kotlin
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.bumptech.glide.Glide
 
 class FlowerAdapter(val context: Context, val flowerList: List<FlowerData>):
         RecyclerView.Adapter<FlowerAdapter.ViewHolder>(){
-
+    private val TAG = "FlowerAdapter: "
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val flowerImage: ImageView = view.findViewById(R.id.flowerImage)
         val flowerName: TextView = view.findViewById(R.id.flowerName)
@@ -24,6 +25,7 @@ class FlowerAdapter(val context: Context, val flowerList: List<FlowerData>):
         holder.itemView.setOnClickListener {
             val position = holder.adapterPosition
             val flower = flowerList[position]
+            Log.i(TAG, "onCreateViewHolder: $position")
             val intent = Intent(context, FlowerActivity::class.java).apply {
                 putExtra(FlowerActivity.FLOWER_NAME, flower.name)
                 putExtra(FlowerActivity.FLOWER_IMAGE_ID,flower.imageId)

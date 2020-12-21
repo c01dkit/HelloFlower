@@ -17,9 +17,6 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
     /* 自动Topic, 用于上报消息 */
     private val PUB_TOPIC = "/$PRODUCTKEY/$DEVICENAME/user/update"
 
-    /* 自动Topic, 用于接受消息 */
-    private val SUB_TOPIC = "/$PRODUCTKEY/$DEVICENAME/user/get"
-
     /* 阿里云Mqtt服务器域名 */
     val host = "tcp://$PRODUCTKEY.iot-as-mqtt.cn-shanghai.aliyuncs.com:1883"
     private var clientId: String? = null
@@ -174,7 +171,6 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
             mqttAndroidClient!!.connect(mqttConnectOptions, null, object : IMqttActionListener {
                 override fun onSuccess(asyncActionToken: IMqttToken) {
                     Log.i(mqttTAG, "connect succeed")
-                    subscribeTopic(SUB_TOPIC)
                 }
                 override fun onFailure(
                     asyncActionToken: IMqttToken,
