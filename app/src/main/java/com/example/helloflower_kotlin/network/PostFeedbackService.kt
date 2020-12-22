@@ -1,4 +1,4 @@
-package com.example.helloflower_kotlin
+package com.example.helloflower_kotlin.network
 
 import okhttp3.ResponseBody
 import retrofit2.Call

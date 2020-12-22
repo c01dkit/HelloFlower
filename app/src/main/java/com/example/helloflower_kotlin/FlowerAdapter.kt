@@ -25,7 +25,8 @@ class FlowerAdapter(val context: Context, val flowerList: List<FlowerData>):
         holder.itemView.setOnClickListener {
             val position = holder.adapterPosition
             if (position == itemCount-1){
-                
+                val prefs = context.getSharedPreferences(context.packageName,Context.MODE_PRIVATE)
+                val ProductKey = prefs.getString("ProductKey","")
             } else{
                 val flower = flowerList[position]
                 val intent = Intent(context, FlowerActivity::class.java).apply {

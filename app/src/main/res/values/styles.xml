@@ -9,4 +9,5 @@
     <style name="FlowerActivityTheme" parent="AppTheme">
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
 </resources>

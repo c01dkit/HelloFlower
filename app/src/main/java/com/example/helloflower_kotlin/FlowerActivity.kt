@@ -2,16 +2,16 @@ package com.example.helloflower_kotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.helloflower_kotlin.network.GetInfoService
+import com.example.helloflower_kotlin.network.InfoData
+import com.example.helloflower_kotlin.network.ServiceCreator
 import kotlinx.android.synthetic.main.flower_activity.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class FlowerActivity : AppCompatActivity() {
     val TAG = "FlowerActivty"

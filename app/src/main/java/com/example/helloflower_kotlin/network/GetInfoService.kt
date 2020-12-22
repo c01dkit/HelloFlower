@@ -1,4 +1,4 @@
-package com.example.helloflower_kotlin
+package com.example.helloflower_kotlin.network
 
 import retrofit2.Call
 import retrofit2.http.GET

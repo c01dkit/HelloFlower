@@ -1,6 +1,7 @@
-package com.example.helloflower_kotlin
+package com.example.helloflower_kotlin.database
 
 import androidx.room.*
+import com.example.helloflower_kotlin.database.Sensor
 
 @Dao
 interface SensorDao {

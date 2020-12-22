@@ -9,10 +9,10 @@ android {
 
     defaultConfig {
         applicationId "com.example.helloflower_kotlin"
-        minSdkVersion 28
+        minSdkVersion 29
         targetSdkVersion 30
         versionCode 1
-        versionName "0.1.4"
+        versionName "0.1.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

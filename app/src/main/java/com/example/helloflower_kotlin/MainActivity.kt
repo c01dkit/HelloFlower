@@ -2,18 +2,22 @@ package com.example.helloflower_kotlin
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.helloflower_kotlin.database.AppDatabase
+import com.example.helloflower_kotlin.database.DeviceDao
 import kotlinx.android.synthetic.main.main_activity.*
 import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var viewModel: MainViewModel
-    lateinit var deviceDao: DeviceDao
+    private lateinit var viewModel: MainViewModel
+    private lateinit var deviceDao: DeviceDao
     private val flowerList = ArrayList<FlowerData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         val adapter = FlowerAdapter(this,flowerList)
         recyclerView.adapter = adapter
 
-        val mqtt =  AliMqtt("a1YFxxHqbhJ","c01dkit","1078a7226ae0ce5a657a484605b88a07",applicationContext)
         swipeRefresh.setColorSchemeResources(R.color.colorPrimary)
         swipeRefresh.setOnRefreshListener {
             refreshFlowers(adapter)
@@ -66,7 +69,9 @@ class MainActivity : AppCompatActivity() {
                     FlowerData(device.deviceName,device.devicePicture,device.groupID))
             }
         }
-        flowerList.add(FlowerData("添加新的植物",R.drawable.begonia,""))
+        if (flowerList.size == 0) {
+            Toast.makeText(this, "点击右上角添加第一株植物", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun refreshFlowers(adapter: FlowerAdapter) {
@@ -79,9 +84,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> drawerLayout.openDrawer(GravityCompat.START)
+            R.id.add_new_flower->{
+
+            }
         }
         return true
     }

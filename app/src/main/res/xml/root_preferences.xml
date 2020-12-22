@@ -1,19 +1,22 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="@string/settings_header">
+    <PreferenceCategory android:title="@string/settings_header">
 
         <EditTextPreference
-            app:key="ProductKey"
-            app:title="@string/ProductKey"
+            android:key="ProductKey"
+            android:title="@string/ProductKey"
+            android:persistent="true"
             app:useSimpleSummaryProvider="true" />
         <EditTextPreference
-            app:key="DeviceName"
-            app:title="@string/DeviceName"
+            android:key="DeviceName"
+            android:title="@string/DeviceName"
+            android:persistent="true"
             app:useSimpleSummaryProvider="true" />
         <EditTextPreference
-            app:key="DeviceSecret"
-            app:title="@string/DeviceSecret"
+            android:key="DeviceSecret"
+            android:title="@string/DeviceSecret"
+            android:persistent="true"
             app:useSimpleSummaryProvider="true" />
 
 <!--        <ListPreference-->

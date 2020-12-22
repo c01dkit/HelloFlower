@@ -51,4 +51,5 @@
         * 为首页添加滑动卡片布局\n</string>
     <string name="submitFeedback">提交反馈</string>
     <string name="feedbackHint">请在此处填写反馈意见</string>
+    <string name="add_new_flower">添加新的植物</string>
 </resources>
