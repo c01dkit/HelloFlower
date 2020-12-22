@@ -1,7 +1,9 @@
 package com.example.helloflower_kotlin
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -12,14 +14,16 @@ import kotlinx.android.synthetic.main.flower_activity.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 class FlowerActivity : AppCompatActivity() {
-    val TAG = "FlowerActivty"
+    val TAG = "Develop: FlowerActivity "
     companion object {
         const val FLOWER_NAME = "flower_name"
         const val FLOWER_IMAGE_ID = "flower_image_id"
     }
-
+    lateinit var mqtt: AliMqtt
+    var STATE = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.flower_activity)
@@ -30,6 +34,18 @@ class FlowerActivity : AppCompatActivity() {
         collapsingToolbar.title = flowerName
         Glide.with(this).load(flowerImageId).into(flowerImageView)
         flowerContentText.text = generateFlowerContent(flowerName)
+
+        val prefs = getSharedPreferences(resources.getString(R.string.preference_path),Context.MODE_PRIVATE)
+        val productKey = prefs.getString("ProductKey","Not found")
+        val deviceSecret = prefs.getString("DeviceSecret","Not found")
+        val deviceName = prefs.getString("DeviceName","Not found")
+
+        try {
+            mqtt = AliMqtt(productKey!!,deviceName!!,deviceSecret!!,applicationContext)
+            STATE = true
+        } catch (e: Exception){
+            e.printStackTrace()
+        }
 
         menu.setOnClickListener {
             val flowerService = ServiceCreator.create(GetInfoService::class.java)
@@ -44,6 +60,7 @@ class FlowerActivity : AppCompatActivity() {
                             Toast.makeText(baseContext,"Hello Flower~",Toast.LENGTH_SHORT).show()
                         }
                     }
+                    
                 }
 
                 override fun onFailure(call: Call<List<InfoData>>, t: Throwable) {

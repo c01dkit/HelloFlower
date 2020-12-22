@@ -9,11 +9,7 @@ import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 
 class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applicationContext: Context) {
-    private val mqttTAG = "AiotMqtt"
-//    "a1YFxxHqbhJ"
-//    "c01dkit"
-//    "1078a7226ae0ce5a657a484605b88a07"
-
+    private val TAG = "Develop: AliMqtt.kt "
     /* 自动Topic, 用于上报消息 */
     private val PUB_TOPIC = "/$PRODUCTKEY/$DEVICENAME/user/update"
 
@@ -88,14 +84,14 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
         try {
             mqttAndroidClient!!.subscribe(topic, 0, null, object : IMqttActionListener {
                 override fun onSuccess(asyncActionToken: IMqttToken) {
-                    Log.i(mqttTAG, "subscribed success")
+                    Log.i(TAG, "subscribed success")
                 }
 
                 override fun onFailure(
                     asyncActionToken: IMqttToken,
                     exception: Throwable
                 ) {
-                    Log.i(mqttTAG, "subscribed failed")
+                    Log.i(TAG, "subscribed failed")
                 }
             })
         } catch (e: MqttException) {
@@ -109,7 +105,7 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
      */
     fun publishMessage(payload: String) {
         try {
-            if (mqttAndroidClient!!.isConnected == false) {
+            if (!mqttAndroidClient!!.isConnected) {
                 mqttAndroidClient!!.connect()
             }
             val message = MqttMessage()
@@ -117,18 +113,18 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
             message.qos = 0
             mqttAndroidClient!!.publish(PUB_TOPIC, message, null, object : IMqttActionListener {
                 override fun onSuccess(asyncActionToken: IMqttToken) {
-                    Log.i(mqttTAG,  "publish succeed!")
+                    Log.i(TAG,  "publish succeed!")
                 }
 
                 override fun onFailure(
                     asyncActionToken: IMqttToken,
                     exception: Throwable
                 ) {
-                    Log.i(mqttTAG,  "publish failed!")
+                    Log.i(TAG,  "publish failed!")
                 }
             })
         } catch (e: MqttException) {
-            Log.e(mqttTAG,  e.toString())
+            Log.e(TAG,  e.toString())
             e.printStackTrace()
         }
     }
@@ -136,8 +132,9 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
     init {
         val aiotMqttOption = AiotMqttOption().getMqttOption(PRODUCTKEY, DEVICENAME, DEVICESECRET)
         if (aiotMqttOption == null) {
-            Log.e(mqttTAG, "device info error")
+            Log.e(TAG, "device info error")
         } else {
+            Log.i(TAG, "aiotMqttOption is ok")
             clientId = aiotMqttOption.clientId
             userName = aiotMqttOption.username
             passWord = aiotMqttOption.password
@@ -153,16 +150,16 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
         mqttAndroidClient = MqttAndroidClient(applicationContext, host, clientId)
         mqttAndroidClient!!.setCallback(object : MqttCallback {
             override fun connectionLost(cause: Throwable) {
-                Log.i(mqttTAG, "connection lost")
+                Log.i(TAG, "connection lost")
             }
 
             @Throws(java.lang.Exception::class)
             override fun messageArrived(topic: String, message: MqttMessage) {
-                Log.i(mqttTAG,"topic: " + topic + ", msg: " + String(message.payload))
+                Log.i(TAG,"topic: " + topic + ", msg: " + String(message.payload))
             }
 
             override fun deliveryComplete(token: IMqttDeliveryToken) {
-                Log.i(mqttTAG, "msg delivered")
+                Log.i(TAG, "msg delivered")
             }
         })
 
@@ -170,16 +167,17 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
         try {
             mqttAndroidClient!!.connect(mqttConnectOptions, null, object : IMqttActionListener {
                 override fun onSuccess(asyncActionToken: IMqttToken) {
-                    Log.i(mqttTAG, "connect succeed")
+                    Log.i(TAG, "connect succeed")
                 }
                 override fun onFailure(
                     asyncActionToken: IMqttToken,
                     exception: Throwable
                 ) {
-                    Log.i(mqttTAG, "connect failed")
+                    Log.i(TAG, "connect failed")
                 }
             })
         } catch (e: MqttException) {
+            Log.e(TAG, ": mqtt connectin failed")
             e.printStackTrace()
         }
     }

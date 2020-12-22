@@ -24,19 +24,12 @@ class FlowerAdapter(val context: Context, val flowerList: List<FlowerData>):
         val holder = ViewHolder(view)
         holder.itemView.setOnClickListener {
             val position = holder.adapterPosition
-            if (position == itemCount-1){
-                val prefs = context.getSharedPreferences(context.packageName,Context.MODE_PRIVATE)
-                val ProductKey = prefs.getString("ProductKey","")
-            } else{
-                val flower = flowerList[position]
-                val intent = Intent(context, FlowerActivity::class.java).apply {
-                    putExtra(FlowerActivity.FLOWER_NAME, flower.name)
-                    putExtra(FlowerActivity.FLOWER_IMAGE_ID,flower.imageId)
-                }
-                context.startActivity(intent)
+            val flower = flowerList[position]
+            val intent = Intent(context, FlowerActivity::class.java).apply {
+                putExtra(FlowerActivity.FLOWER_NAME, flower.name)
+                putExtra(FlowerActivity.FLOWER_IMAGE_ID,flower.imageId)
             }
-
-
+            context.startActivity(intent)
         }
         return holder
     }

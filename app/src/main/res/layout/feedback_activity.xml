@@ -34,11 +34,11 @@
                 app:cardCornerRadius="4dp">
 
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/log">
-                    </TextView>
+                    </com.google.android.material.textview.MaterialTextView>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -60,7 +60,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/feedbackHint"/>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/feedbackButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

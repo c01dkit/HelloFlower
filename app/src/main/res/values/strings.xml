@@ -1,7 +1,12 @@
 <resources>
+    <!--dialog editor margin-->
+    <dimen name="dialog_text_margin_horizontal">25dp</dimen>
+    <dimen name="dialog_text_margin_vertical">15dp</dimen>
     <string name="app_name">HelloFlower</string>
     <string name="title_activity_settings">设置</string>
 
+    <!-- Preference path-->
+    <string name="preference_path">com.example.helloflower_kotlin_preferences</string>
     <!-- Preference Titles -->
     <string name="settings_header">本机属性设置</string>
     <string name="sync_header">同步设置</string>
@@ -52,4 +57,6 @@
     <string name="submitFeedback">提交反馈</string>
     <string name="feedbackHint">请在此处填写反馈意见</string>
     <string name="add_new_flower">添加新的植物</string>
+    <string name="new_flower_groupID_hint">阿里云分组ID</string>
+    <string name="new_flower_groupName_hint">植物名称</string>
 </resources>
