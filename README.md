@@ -58,6 +58,7 @@ HelloFlower是一款物联网时代智慧家居app，用户可以使用这款软
   * 解决方法是手动转数组[^1]
 * gradle build经常出现证书错误问题"unable to find valid certification path to requested target"
   * 手动下载证书并添加到本地[^2]
+* Unable to add window -- token null is not valid; is your activity running? 使用acticity的上下文context
 
 ## References
 

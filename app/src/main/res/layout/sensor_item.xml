@@ -11,20 +11,22 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/flowerImage"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop" />
-
         <TextView
-            android:id="@+id/flowerName"
+            android:id="@+id/tv_itemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="start"
             android:layout_margin="10dp"
-            android:textSize="16sp" />
+            android:textSize="18sp"
+            android:padding="@dimen/dialog_text_margin_vertical"/>
+        <TextView
+            android:id="@+id/tv_itemValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="10dp"
+            android:textSize="16sp"
+            android:padding="@dimen/dialog_text_margin_vertical"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

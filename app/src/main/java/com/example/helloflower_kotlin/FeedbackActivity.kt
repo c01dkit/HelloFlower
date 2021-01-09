@@ -18,7 +18,6 @@ class FeedbackActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        Toast.makeText(this, "当前版本号：${BuildConfig.VERSION_NAME}", Toast.LENGTH_SHORT).show()
         val feedbackService = ServiceCreator.create(PostFeedbackService::class.java)
 
         feedbackButton.setOnClickListener {

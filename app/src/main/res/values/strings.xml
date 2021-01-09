@@ -4,7 +4,10 @@
     <dimen name="dialog_text_margin_vertical">15dp</dimen>
     <string name="app_name">HelloFlower</string>
     <string name="title_activity_settings">设置</string>
-
+    <string-array name="sensor_type_array">
+        <item>温度</item>
+        <item>湿度</item>
+    </string-array>
     <!-- Preference path-->
     <string name="preference_path">com.example.helloflower_kotlin_preferences</string>
     <!-- Preference Titles -->
@@ -24,8 +27,8 @@
 
 
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="userDescription">有任何问题或意见请联系我：bychang@zju.edu.cn</string>
-    <string name="userName">c01dkit</string>
+    <string name="userDescription">智能植株监控平台</string>
+    <string name="userName">HelloFlower</string>
     <string name="navProfile">主页</string>
     <string name="navSettings">设置</string>
     <string name="navFeedback">反馈</string>
@@ -59,4 +62,5 @@
     <string name="add_new_flower">添加新的植物</string>
     <string name="new_flower_groupID_hint">阿里云分组ID</string>
     <string name="new_flower_groupName_hint">植物名称</string>
+    <string name="sensor_name">设备名称</string>
 </resources>

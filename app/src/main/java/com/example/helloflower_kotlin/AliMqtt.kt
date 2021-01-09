@@ -2,6 +2,7 @@ package com.example.helloflower_kotlin
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import org.eclipse.paho.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.*
 import java.math.BigInteger
@@ -12,7 +13,8 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
     private val TAG = "Develop: AliMqtt.kt "
     /* 自动Topic, 用于上报消息 */
     private val PUB_TOPIC = "/$PRODUCTKEY/$DEVICENAME/user/update"
-
+    /* 自动Topic, 用于接受消息 */
+    private val SUB_TOPIC = "/$PRODUCTKEY/$DEVICENAME/user/get"
     /* 阿里云Mqtt服务器域名 */
     val host = "tcp://$PRODUCTKEY.iot-as-mqtt.cn-shanghai.aliyuncs.com:1883"
     private var clientId: String? = null
@@ -146,22 +148,9 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
         mqttConnectOptions.password = passWord!!.toCharArray()
 
 
-        /* 创建MqttAndroidClient对象，并设置回调接口。 */
+        /* 创建MqttAndroidClient对象 */
         mqttAndroidClient = MqttAndroidClient(applicationContext, host, clientId)
-        mqttAndroidClient!!.setCallback(object : MqttCallback {
-            override fun connectionLost(cause: Throwable) {
-                Log.i(TAG, "connection lost")
-            }
 
-            @Throws(java.lang.Exception::class)
-            override fun messageArrived(topic: String, message: MqttMessage) {
-                Log.i(TAG,"topic: " + topic + ", msg: " + String(message.payload))
-            }
-
-            override fun deliveryComplete(token: IMqttDeliveryToken) {
-                Log.i(TAG, "msg delivered")
-            }
-        })
 
         /* 建立MQTT连接。 */
         try {
@@ -174,6 +163,7 @@ class AliMqtt(PRODUCTKEY:String, DEVICENAME:String, DEVICESECRET:String, applica
                     exception: Throwable
                 ) {
                     Log.i(TAG, "connect failed")
+                    Toast.makeText(HelloFlowerApp.context, "连接失败,请检查设备属性输入是否正确!", Toast.LENGTH_SHORT).show()
                 }
             })
         } catch (e: MqttException) {

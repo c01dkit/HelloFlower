@@ -26,23 +26,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.google.android.material.card.MaterialCardView
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp"
-                app:cardCornerRadius="4dp">
-
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/log">
-                    </com.google.android.material.textview.MaterialTextView>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -73,7 +57,7 @@
 
 
 
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

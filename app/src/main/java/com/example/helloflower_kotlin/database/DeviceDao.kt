@@ -19,4 +19,10 @@ interface DeviceDao{
 
     @Query("delete from Device where id = :id")
     fun deleteDeviceById(id: Long): Int
+
+    @Query("delete from Device where groupID = :groupID")
+    fun deleteDeviceByGroupID(groupID: String): Int
+
+    @Query("delete from Device where deviceName = :deviceName and devicePicture = :devicePicture and groupID = :groupID")
+    fun deleteDeviceByFlower(deviceName:String, devicePicture: Int, groupID: String): Int
 }

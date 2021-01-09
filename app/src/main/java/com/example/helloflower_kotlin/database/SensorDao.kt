@@ -17,7 +17,16 @@ interface SensorDao {
     @Query("select * from Sensor")
     fun loadAllSensors(): List<Sensor>
 
+    @Query("select * from Sensor where groupID = :groupID")
+    fun loadSensorsByGroupID(groupID: String): List<Sensor>
+
     @Query("delete from Sensor where id = :id")
     fun deleteSensorById(id: Long): Int
+
+    @Query("delete from Sensor where groupID = :groupID and itemName = :itemName")
+    fun deleteSensorsByGroupIDAndItemName(groupID: String, itemName: String): Int
+
+    @Query("delete from Sensor where groupID = :groupID")
+    fun deleteSensorsByGroupID(groupID: String): Int
 
 }
